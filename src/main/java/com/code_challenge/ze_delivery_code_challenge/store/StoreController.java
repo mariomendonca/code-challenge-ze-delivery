@@ -21,9 +21,9 @@ public class StoreController {
         return ResponseEntity.ok().body(storeService.findAll());
     }
 
-    @PostMapping
-    public ResponseEntity<Store> createStore(@RequestBody Store store) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(storeService.createStore(store));
+    @PostMapping("/{userId}")
+    public ResponseEntity<Store> createStore(@RequestBody Store store, @PathVariable String userId) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(storeService.createStore(store, userId));
     }
 
     @GetMapping("/{id}")

@@ -1,25 +1,26 @@
 package com.code_challenge.ze_delivery_code_challenge.store;
 
-import lombok.AllArgsConstructor;
+import com.code_challenge.ze_delivery_code_challenge.user.User;
+import com.code_challenge.ze_delivery_code_challenge.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Service
-@AllArgsConstructor
 public class StoreService {
-
     @Autowired
-    private final StoreRepository storeRepository;
+    private StoreRepository storeRepository;
+    @Autowired
+    private UserService userService;
 
     public List<Store> findAll() {
         return storeRepository.findAll();
     }
 
-    public Store createStore(Store store) {
+    public Store createStore(Store store, String userId) {
+        User user = userService.findUserById(userId);
+        store.setUser(user);
         return storeRepository.insert(store);
     }
 

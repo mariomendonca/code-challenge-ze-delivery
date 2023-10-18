@@ -1,11 +1,13 @@
 package com.code_challenge.ze_delivery_code_challenge.store;
 
+import com.code_challenge.ze_delivery_code_challenge.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.geo.GeoJsonMultiPolygon;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
@@ -15,10 +17,10 @@ public class Store {
     @Id
     private String id;
     private String tradingName;
-
     @Indexed(unique = true)
     private String document;
     private GeoJsonMultiPolygon coverageArea;
     private GeoJsonPoint Address;
-
+    @DBRef
+    private User user;
 }

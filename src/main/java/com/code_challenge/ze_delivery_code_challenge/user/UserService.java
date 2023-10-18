@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @AllArgsConstructor
@@ -19,5 +20,9 @@ public class UserService {
 
     public User createUser(User user) {
         return userRepository.insert(user);
+    }
+
+    public User findUserById(String id) {
+        return userRepository.findById(id).orElseThrow(() -> new NoSuchElementException("User not found with this id " + id));
     }
 }
