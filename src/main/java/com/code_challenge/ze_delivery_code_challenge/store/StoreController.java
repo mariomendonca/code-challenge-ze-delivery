@@ -1,6 +1,5 @@
 package com.code_challenge.ze_delivery_code_challenge.store;
 
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,11 +9,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("stores")
-@AllArgsConstructor
 public class StoreController {
 
     @Autowired
-    private final StoreService storeService;
+    private StoreService storeService;
 
     @GetMapping
     public ResponseEntity<List<Store>> getStores() {
