@@ -3,5 +3,6 @@ spring:
     mongodb:
       port: 27017
       host: localhost
-      database: ze-delivery
+#      database: ze-delivery
+      database: testing-db
       auto-index-creation: true

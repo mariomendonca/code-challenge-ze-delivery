@@ -28,4 +28,8 @@ public class StoreService {
         return storeRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Store not found with this id " + id));
     }
 
+    public Store getNearestStore(double lat, double lng) {
+        return storeRepository.findByCoverageAreaIntersects(List.of(lat, lng)).get(0);
+    }
+
 }

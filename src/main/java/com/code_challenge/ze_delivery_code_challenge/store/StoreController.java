@@ -28,4 +28,12 @@ public class StoreController {
     public ResponseEntity<Store> getStoreById(@PathVariable String id) {
         return  ResponseEntity.ok().body(storeService.getStoreById(id));
     }
+
+    @GetMapping("/nearest")
+    public ResponseEntity<Store> getNearestByLatLng(
+            @RequestParam double lat,
+            @RequestParam double lng
+    ) {
+        return ResponseEntity.ok().body(storeService.getNearestStore(lat, lng));
+    }
 }
